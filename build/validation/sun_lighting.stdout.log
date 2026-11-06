@@ -1,0 +1,7 @@
+
+Godot Engine v3.5.3.stable.mono.official.6c814135b - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce GTX 650/PCIe/SSE2
+ 
+Mono: Log file is: 'C:/Users/AlexanDRu/AppData/Roaming/Godot/mono/mono_logs/2026-10-25_01.15.43_17240.log'
+Lighting luminance: right 0.392015/0.004205, left 0.392675/0.004205, back/front 0.004205/0.468285
+PASS: distant directional Sun, terminator, translation-invariant lighting, full orbit, continuous framing, and smooth collapse

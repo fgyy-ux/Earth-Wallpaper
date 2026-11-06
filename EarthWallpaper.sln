@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarthWallpaper", "EarthWallpaper.csproj", "{B974C07E-1B41-426F-89BD-C1882E7051B7}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Any CPU = Debug|Any CPU
+        ExportDebug|Any CPU = ExportDebug|Any CPU
+        ExportRelease|Any CPU = ExportRelease|Any CPU
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {B974C07E-1B41-426F-89BD-C1882E7051B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {B974C07E-1B41-426F-89BD-C1882E7051B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {B974C07E-1B41-426F-89BD-C1882E7051B7}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+        {B974C07E-1B41-426F-89BD-C1882E7051B7}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+        {B974C07E-1B41-426F-89BD-C1882E7051B7}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+        {B974C07E-1B41-426F-89BD-C1882E7051B7}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+    EndGlobalSection
+EndGlobal

@@ -1,0 +1,2 @@
+﻿ERROR: Another resource is loaded from path 'res://assets/earth.png' (possible cyclic resource inclusion).
+   at: (core/resource.cpp:79)

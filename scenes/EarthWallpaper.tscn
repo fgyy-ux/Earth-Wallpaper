@@ -1,0 +1,144 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://scripts/EarthWallpaper.cs" type="Script" id=1]
+[ext_resource path="res://assets/earth.png" type="Texture" id=2]
+[ext_resource path="res://assets/stars.svg" type="Texture" id=3]
+[ext_resource path="res://shaders/earth_surface.shader" type="Shader" id=4]
+[ext_resource path="res://shaders/sun_surface.shader" type="Shader" id=5]
+[ext_resource path="res://shaders/sun_corona.shader" type="Shader" id=6]
+[ext_resource path="res://shaders/eclipse_ring.shader" type="Shader" id=7]
+[ext_resource path="res://shaders/sun_flare.shader" type="Shader" id=8]
+[ext_resource path="res://assets/earth_night.jpg" type="Texture" id=9]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 4 )
+shader_param/sun_direction_world = Vector3( 0.965926, 0.258819, 0 )
+shader_param/city_lights_strength = 0.85
+shader_param/night_twilight_width = 0.18
+shader_param/earth_texture = ExtResource( 2 )
+shader_param/night_texture = ExtResource( 9 )
+
+[sub_resource type="SphereMesh" id=2]
+material = SubResource( 1 )
+radial_segments = 24
+rings = 12
+
+[sub_resource type="SphereShape" id=3]
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 5 )
+shader_param/visibility = 0.0
+
+[sub_resource type="SphereMesh" id=7]
+material = SubResource( 6 )
+radial_segments = 32
+rings = 16
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 6 )
+shader_param/strength = 0.0
+
+[sub_resource type="QuadMesh" id=9]
+size = Vector2( 2, 2 )
+
+[sub_resource type="ShaderMaterial" id=11]
+render_priority = 1
+shader = ExtResource( 8 )
+shader_param/strength = 0.0
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 7 )
+shader_param/strength = 0.0
+shader_param/bead_strength = 0.0
+shader_param/bead_direction = Vector2( 1, 0 )
+
+[sub_resource type="Environment" id=5]
+background_mode = 4
+background_canvas_max_layer = -1
+ambient_light_color = Color( 0.32, 0.4, 0.56, 1 )
+ambient_light_energy = 0.025
+ambient_light_sky_contribution = 0.0
+
+[node name="EarthWallpaper" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Stars" type="TextureRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+keep_aspect = 0
+projection = 1
+current = true
+size = 6.0
+near = 0.1
+far = 1200.0
+
+[node name="EarthRoot" type="Spatial" parent="."]
+transform = Transform( 0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -1.35, 1.15, 0 )
+
+[node name="Spin" type="Spatial" parent="EarthRoot"]
+transform = Transform( -0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, -0.819152, 0, 0, 0 )
+
+[node name="EarthMesh" type="MeshInstance" parent="EarthRoot/Spin"]
+cast_shadow = 0
+mesh = SubResource( 2 )
+
+[node name="TapArea" type="Area" parent="EarthRoot"]
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="EarthRoot/TapArea"]
+shape = SubResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Sun" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 964.576, 259.969, 0 )
+
+[node name="Core" type="MeshInstance" parent="Sun"]
+transform = Transform( 0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 0, 0, 0 )
+visible = false
+layers = 2
+cast_shadow = 0
+mesh = SubResource( 7 )
+
+[node name="Corona" type="MeshInstance" parent="Sun"]
+transform = Transform( 0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, 0, 0, 0 )
+layers = 2
+material_override = SubResource( 8 )
+cast_shadow = 0
+mesh = SubResource( 9 )
+
+[node name="SunLight" type="DirectionalLight" parent="Sun"]
+transform = Transform( 0, 0, -1, -0.258819, 0.965926, 0, 0.965926, 0.258819, 0, 0, 0, 0 )
+light_color = Color( 1, 0.92, 0.78, 1 )
+light_energy = 1.1
+light_specular = 0.0
+light_cull_mask = 1
+
+[node name="Flare" type="MeshInstance" parent="Sun"]
+layers = 2
+material_override = SubResource( 11 )
+cast_shadow = 0
+mesh = SubResource( 9 )
+
+[node name="SunTween" type="Tween" parent="."]
+
+[node name="EclipseRing" type="MeshInstance" parent="."]
+layers = 2
+material_override = SubResource( 10 )
+cast_shadow = 0
+mesh = SubResource( 9 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 5 )

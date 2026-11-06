@@ -1,0 +1,7 @@
+
+Godot Engine v3.5.3.stable.mono.official.6c814135b - https://godotengine.org
+OpenGL ES 2.0 Renderer: NVIDIA GeForce GTX 650/PCIe/SSE2
+ 
+Mono: Log file is: 'C:/Users/AlexanDRu/AppData/Roaming/Godot/mono/mono_logs/2026-10-25_01.15.37_20412.log'
+Twilight city luminance: [0.57034, 0.504911, 0.294004, 0.077783, 0.000358, 0]; flare beam gain: 0.033912
+PASS: NASA night map, golden emission, smooth terminator fade, focused contact beam, stable irradiance
