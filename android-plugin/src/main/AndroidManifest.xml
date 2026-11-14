@@ -1,0 +1,20 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <service
+            android:name="org.example.earthwallpaper.EarthWallpaperService"
+            android:label="@string/wallpaper_name"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/earth_wallpaper" />
+        </service>
+
+        <meta-data
+            android:name="org.godotengine.plugin.v1.EarthLiveWallpaper"
+            android:value="org.example.earthwallpaper.EarthLiveWallpaperPlugin" />
+    </application>
+</manifest>

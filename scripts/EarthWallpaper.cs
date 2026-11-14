@@ -75,6 +75,15 @@ public class EarthWallpaper : Spatial
 
     public bool Expanded { get { return _expanded; } }
 
+    /// <summary>Opens Android's system preview so the user can apply this live wallpaper.</summary>
+    public void OpenAndroidWallpaperPicker()
+    {
+        if (OS.GetName() != "Android" || !Engine.HasSingleton("EarthLiveWallpaper"))
+            return;
+
+        Engine.GetSingleton("EarthLiveWallpaper").Call("openWallpaperPicker");
+    }
+
     public override void _Ready()
     {
         _earthRoot = GetNode<Spatial>("EarthRoot");

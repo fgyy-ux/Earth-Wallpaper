@@ -79,7 +79,11 @@ The APK is an app preview, not an installable Android live-wallpaper service.
 
 ## Actual Android live wallpaper
 
-An Android native integration must implement WallpaperService and WallpaperService.Engine, declare BIND_WALLPAPER and wallpaper XML metadata, host Godot's rendering on the service's surface, enable and forward supported touch events, and pause rendering when the wallpaper is invisible. For Godot 3.5.3 Mono, this requires compatible custom Android hosting/templates; it is not accomplished by changing the export preset. Launcher touch forwarding also varies by launcher.
+The native plugin source is in `android-plugin/`. It declares a `WallpaperService` with the Android wallpaper service intent, `BIND_WALLPAPER`, and `@xml/earth_wallpaper` metadata. Its wallpaper renderer loads this project's day and night Earth maps, animates the globe, and toggles the expanded view on a tap. Call `OpenAndroidWallpaperPicker()` from the Godot scene (for example, from a setup button) to show Android's system preview/apply flow.
+
+Build and install the AAR using the steps in `android-plugin/README.md`, then place the AAR and `.gdap` under `android/plugins/`, install Godot's matching custom Android build template, and enable **Custom Build** plus the plugin in the Android export preset. The repository does not include the Godot engine AAR, Android SDK, signing keys, or a built plugin AAR, so the checked-in Android source is not yet included in the existing APK export.
+
+This wallpaper is a native Android rendering of the project's Earth textures and basic tap/rotation behavior. Godot 3.5.3's regular Android plugin API cannot run the C# scene or its Godot renderer inside the wallpaper service; doing so requires custom engine/template work to render directly into the service's `SurfaceHolder`. Launcher touch forwarding also varies by launcher.
 
 Reference: [Android WallpaperService](https://developer.android.com/reference/android/service/wallpaper/WallpaperService).
 

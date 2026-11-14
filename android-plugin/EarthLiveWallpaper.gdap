@@ -1,0 +1,9 @@
+[config]
+name="EarthLiveWallpaper"
+binary_type="local"
+binary="EarthLiveWallpaper.release.aar"
+
+[dependencies]
+local=[]
+remote=[]
+custom_maven_repos=[]

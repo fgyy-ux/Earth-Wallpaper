@@ -39,5 +39,6 @@ project/assembly_name="EarthWallpaper"
 [rendering]
 
 quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
 quality/shading/force_vertex_shading.mobile=false
 environment/default_clear_color=Color( 0.006, 0.012, 0.026, 1 )
